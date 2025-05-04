@@ -19,7 +19,7 @@ BASE_DIR      = os.path.abspath(os.path.dirname(__file__))
 # --------------------------------------------------------------------------- #
 def run_flask():
     from sam_server import app          # <-- your existing Flask instance
-    app.run(host="0.0.0.0", port=5001)
+    app.run(host="127.0.0.1", port=5001)
 
 # --------------------------------------------------------------------------- #
 # 2) Service framework
