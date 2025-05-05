@@ -15,10 +15,12 @@ Source: "scripts\download_model.py"; DestDir: "{app}\scripts"
 Source: "scripts\postinstall.ps1";   Destdir: "{app}\scripts"
 Source: "bin\python-3.11.9-embed-amd64.zip"; DestDir: "{app}\bin"
 
-[Run] ; executed AFTER files are copied
-Filename: "{cmd}"; Parameters: "/c ""{app}\scripts\postinstall.ps1"""; Flags: runhidden runascurrentuser
+[Run]
+Filename: "powershell.exe"; \
+Parameters: "-ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -File ""{app}\scripts\postinstall.ps1"""; \
+Flags: runhidden
 
-[Code]  ; run PowerShell post‑install script
+[Code]
 function InitializeSetup(): Boolean;
 begin
   Result := True;

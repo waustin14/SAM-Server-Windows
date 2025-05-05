@@ -24,7 +24,7 @@ if (-not $pyExe) {
 & sc.exe config $svcName start= auto         # auto‑start at boot
 
 # ---------- 5) model ----------
-& "$dir\venv\Scripts\python.exe" "$dir\scripts\download_model.py" "$dir\models\sam_vit_h.pth"
+& "$dir\venv\Scripts\python.exe" "$dir\scripts\download_model.py" "%PROGRAMDATA%\SAMService\sam_vit_h.pth"
 
 # ---------- 6) start service ----------
 $svcName = "SAMService"
