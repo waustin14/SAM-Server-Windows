@@ -7,7 +7,7 @@ import os, time, threading, torch
 
 # Define the model path and load the model, based on whether the system is Windows or Mac
 if os.name == "nt": # Windows
-    app_data_dir = os.path.join(os.environ.get('PROGRAMDATA', ''), 'SAMService')
+    app_data_dir = os.path.join('C:\\ProgramData', 'SAMService')
 else: # Mac
     app_data_dir = os.path.join('/Library/Application Support', 'SAMService')
 if not os.path.exists(app_data_dir):
@@ -58,8 +58,8 @@ def segment():
     predictor = _get_predictor()
     predictor.set_image(img)
     mask, _, _ = predictor.predict(
-        point_coords=body.get("point_coords"),
-        point_labels=body.get("point_labels"),
+        point_coords=np.array(body.get("point_coords")),
+        point_labels=np.array(body.get("point_labels")),
         multimask_output=False,
     )
 
